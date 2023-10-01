@@ -1,0 +1,18 @@
+% !TeX root = ejemplo.tex
+\documentclass[10pt]{article}
+
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+
+\usepackage{00-plantilla/preambulo-plantilla}
+
+%% Titulo del documento
+\newcommand{\docTitulo}{Documento de ejemplo}
+
+\begin{document}
+
+\import{00-plantilla}{main}
+
+\import{01-ejemplo}{main.tex}
+
+\end{document}
