@@ -15,7 +15,6 @@ collection-latex 1
 collection-wintools 1
 instopt_adjustpath 1
 instopt_adjustrepo 1
-instopt_desktop_integration 1
 instopt_file_assocs 1
 instopt_letter 1
 instopt_portable 0
