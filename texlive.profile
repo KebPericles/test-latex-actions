@@ -2,20 +2,12 @@
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
 selected_scheme scheme-basic
-TEXDIR C:/texlive/2023
-TEXMFCONFIG ~/.texlive2023/texmf-config
-TEXMFHOME ~/texmf
-TEXMFLOCAL C:/texlive/texmf-local
-TEXMFSYSCONFIG C:/texlive/2023/texmf-config
-TEXMFSYSVAR C:/texlive/2023/texmf-var
-TEXMFVAR ~/.texlive2023/texmf-var
 binary_windows 1
 collection-basic 1
 collection-latex 1
 collection-wintools 1
 instopt_adjustpath 1
 instopt_adjustrepo 1
-instopt_file_assocs 1
 instopt_letter 1
 instopt_portable 0
 instopt_write18_restricted 1
