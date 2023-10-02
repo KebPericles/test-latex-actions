@@ -47,7 +47,7 @@ jobs:
 
     - name: Compile LaTeX document
       run: |
-        latexmk -interaction=nonstopmode -pdf -output-directory=00-out requerimientos.tex
+        sudo latexmk -interaction=nonstopmode -pdf -output-directory=00-out requerimientos.tex
       working-directory: src
       
     - name: Move PDF to root directory
