@@ -27,7 +27,7 @@ jobs:
         wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
         zcat < install-tl-unx.tar.gz | tar -xv
         ls
-        cd install-tl-*
+        cd install-tl-20*
         sudo perl ./install-tl --no-interaction
         echo "export PATH=\"/usr/local/texlive/2023/bin/x86_64-linux:\$PATH\"" >> $GITHUB_ENV
       shell: bash
