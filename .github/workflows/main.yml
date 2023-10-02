@@ -22,13 +22,16 @@ jobs:
         restore-keys: |
           latex-packages-
 
+    - name: Copy TexLive profile to tmp
+      run: cp texlive.profile /tmp/
+
     - name: Install TexLive
       run: |
         wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
         zcat < install-tl-unx.tar.gz | tar -xv
         ls
         cd install-tl-20*
-        sudo perl ./install-tl --no-interaction
+        sudo perl ./install-tl --no-interaction -profile=../texlive.profile
         echo "export PATH=\"/usr/local/texlive/2023/bin/x86_64-linux:\$PATH\"" >> $GITHUB_ENV
       shell: bash
       working-directory: /tmp/
@@ -39,7 +42,7 @@ jobs:
         sudo apt-get install -y texlive-latex-extra texlive-lang-spanish texlive-fonts-extra texlive-bibtex-extra biber make git latexmk
         sudo tlmgr init-usertree
         sudo tlmgr update --self --all
-        sudo tlmgr install commath
+        sudo tlmgr install `cat packages.txt`
       shell: bash
       if: steps.cache-latex.outputs.cache-hit != 'true'
 
