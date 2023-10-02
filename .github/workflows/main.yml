@@ -10,11 +10,25 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v4.1.0
 
+    - name: Cache LaTeX packages and latexmk
+      id: cache-latex
+      uses: actions/cache@v3.3.2
+      with:
+        path: |
+          ~/.texlive
+          /usr/share/texlive
+        key: latex-packages-${{ hashFiles('**/*.tex') }}
+        restore-keys: |
+          latex-packages-
+
     - name: Install LaTeX distribution
       run: |
         sudo apt-get update
         sudo apt-get install -y texlive-latex-extra texlive-lang-spanish texlive-fonts-extra texlive-bibtex-extra biber make git latexmk
+        sudo tlmgr update --self --all
+        sudo tlmgr install commath
       shell: bash
+      if: steps.cache-latex.outputs.cache-hit != 'true'
 
     - name: Compile LaTeX document
       run: |
