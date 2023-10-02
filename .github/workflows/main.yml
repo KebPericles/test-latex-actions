@@ -18,7 +18,12 @@ jobs:
 
     - name: Compile LaTeX document
       run: |
-        pdflatex -interaction=nonstopmode -halt-on-error -pdf src/requerimientos.tex
+        latexmk -interaction=nonstopmode -pdf -output-directory=00-out requerimientos.tex
+      working-directory: src
+      
+    - name: Move PDF to root directory
+      run: |
+        mv src/00-out/requerimientos.pdf requerimientos.pdf
 
     - name: Commit files
       run: |
