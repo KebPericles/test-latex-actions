@@ -17,9 +17,20 @@ jobs:
         path: |
           ~/.texlive
           /usr/share/texlive
+          /usr/local/texlive
         key: latex-packages-${{ hashFiles('**/*.tex') }}
         restore-keys: |
           latex-packages-
+
+    - name: Install TexLive
+      run: |
+        wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        zcat < install-tl-unx.tar.gz | tar xf -
+        cd install-tl-*
+        sudo perl ./install-tl --no-interaction
+        echo "export PATH=\"/usr/local/texlive/2023/bin/x86_64-linux:\$PATH\"" >> $GITHUB_ENV
+      shell: bash
+      working-directory: /tmp/
 
     - name: Install LaTeX distribution
       run: |
