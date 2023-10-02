@@ -2,7 +2,6 @@
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
 selected_scheme scheme-basic
-binary_windows 1
 collection-basic 1
 collection-latex 1
 collection-wintools 1
