@@ -32,7 +32,7 @@ jobs:
         ls
         cd install-tl-20*
         sudo perl ./install-tl --no-interaction -profile=/tmp/texlive.profile
-        sudo tlmgr repository add https://mirror2.sandyriver.net/pub/ctan/systems/texlive/tlnet
+        sudo tlmgr repository set https://mirror2.sandyriver.net/pub/ctan/systems/texlive/tlnet
         echo "export PATH=\"/usr/local/texlive/2023/bin/x86_64-linux:\$PATH\"" >> $GITHUB_ENV
       shell: bash
       working-directory: /tmp/
@@ -44,6 +44,7 @@ jobs:
         sudo tlmgr install `cat packages.txt`
       shell: bash
       if: steps.cache-latex.outputs.cache-hit != 'true'
+      continue-on-error: true
 
     - name: Compile LaTeX document
       run: |
